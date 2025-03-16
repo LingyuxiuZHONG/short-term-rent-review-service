@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD MyBatis Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.reviewservice.mapper.ReviewMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO review (listing_id, booking_id, reviewer_id, rating, content)
+        VALUES (#{listingId}, #{bookingId}, #{reviewerId}, #{rating}, #{content})
+    </insert>
+
+
+    <select id="getReviewsByListingId" resultType="com.example.reviewservice.model.Review">
+        SELECT * FROM review WHERE listing_id = #{listingId}
+    </select>
+
+    <select id="getReviewerByReviewerId" resultType="com.example.reviewservice.model.Review">
+        SELECT * FROM review WHERE reviewer_id = #{reviewerId}
+    </select>
+
+
+    <select id="getListingRating" >
+        SELECT avg(rating) FROM review WHERE listing_id = #{listingId}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM review WHERE id = #{id}
+    </delete>
+
+    <select id="ifHaveReviewed" resultType="int">
+        SELECT COUNT(*) FROM review
+        WHERE reviewer_id = #{reviewerId}
+          AND listing_id = #{listingId}
+    </select>
+
+
+
+
+
+
+
+
+
+</mapper>

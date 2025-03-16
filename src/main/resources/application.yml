@@ -1,0 +1,29 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/review_service_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root            # ??????
+    password: 123             # ?????
+    hikari:
+      maximum-pool-size: 10   # ????????
+  application:
+    name: reviewservice
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+mybatis:
+  type-aliases-package: com.example.reviewservice.model  # ?????
+  mapper-locations: classpath:mapper/*.xml  # ??????
+  configuration:
+    map-underscore-to-camel-case: true                  # ?????????????
+    cache-enabled: false                                # ??????????????????????? false?
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+file:
+  upload-dir: src/main/resources
