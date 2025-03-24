@@ -4,6 +4,7 @@ package com.example.reviewservice.service.impl;
 import com.example.common.exception.BusinessException;
 import com.example.feignapi.clients.BookingClient;
 import com.example.feignapi.clients.ListingClient;
+import com.example.feignapi.clients.UserClient;
 import com.example.feignapi.vo.BookingVO;
 import com.example.feignapi.vo.ListingCard;
 import com.example.feignapi.vo.ReviewVO;
@@ -27,6 +28,7 @@ public class ReviewServiceImpl implements ReviewService {
     private final ReviewMapper reviewMapper;
     private final ListingClient listingClient;
     private final BookingClient bookingClient;
+    private final UserClient userClient;
 
 
     @Override
@@ -102,6 +104,9 @@ public class ReviewServiceImpl implements ReviewService {
     private ReviewVO convertToReviewVO(Review review) {
         ReviewVO reviewVO = new ReviewVO();
         BeanUtils.copyProperties(review, reviewVO);
+
+        reviewVO.setReviewer(userClient.getUserById(review.getReviewerId()).getBody().getData());
+
         return reviewVO;
     }
 }

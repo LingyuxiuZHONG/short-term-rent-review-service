@@ -13,6 +13,9 @@ public interface ReviewMapper {
 
     List<Review> getReviewsByListingId(Long listingId);
 
+
+    Review getReviewByReviewId(Long id);
+
     int delete(Long id);
 
     List<Review> getReviewsByReviewerId(Long reviewerId);

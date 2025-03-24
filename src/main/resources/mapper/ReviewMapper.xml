@@ -7,6 +7,9 @@
         VALUES (#{listingId}, #{bookingId}, #{reviewerId}, #{rating}, #{content})
     </insert>
 
+    <select id="getReviewByReviewId" resultType="com.example.reviewservice.model.Review">
+        SELECT * FROM review WHERE id = #{id}
+    </select>
 
     <select id="getReviewsByListingId" resultType="com.example.reviewservice.model.Review">
         SELECT * FROM review WHERE listing_id = #{listingId}
