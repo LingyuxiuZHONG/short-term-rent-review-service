@@ -97,6 +97,12 @@ public class ReviewServiceImpl implements ReviewService {
         }
     }
 
+    @Override
+    public Integer getReviewCountByListingId(Long listingId) {
+        Integer reviewCount = reviewMapper.getReviewCountByListingId(listingId);
+        return reviewCount;
+    }
+
     private Double getListingRating(Long listingId) {
         return reviewMapper.getListingRating(listingId);
     }

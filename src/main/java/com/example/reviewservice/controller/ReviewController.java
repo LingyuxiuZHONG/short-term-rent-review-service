@@ -31,6 +31,12 @@ public class ReviewController {
         return ResponseEntity.ok(ApiResponse.success("查询成功", reviews));
     }
 
+    @GetMapping("/listings/{listingId}/count")
+    public ResponseEntity<ApiResponse<Integer>> getReviewCountByListingId(@PathVariable Long listingId) {
+        Integer reviewCount = reviewService.getReviewCountByListingId(listingId);
+        return ResponseEntity.ok(ApiResponse.success("查询成功", reviewCount));
+    }
+
 
 
     @DeleteMapping("/{id}")

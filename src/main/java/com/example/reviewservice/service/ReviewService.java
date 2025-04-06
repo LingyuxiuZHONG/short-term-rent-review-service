@@ -12,4 +12,5 @@ public interface ReviewService {
 
     void deleteReview(Long id);
 
+    Integer getReviewCountByListingId(Long listingId);
 }

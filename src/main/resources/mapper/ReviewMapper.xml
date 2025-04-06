@@ -19,6 +19,10 @@
         SELECT * FROM review WHERE reviewer_id = #{reviewerId}
     </select>
 
+    <select id="getReviewCountByListingId">
+        SELECT COUNT(*) FROM review WHERE listing_id = #{listingId}
+    </select>
+
 
     <select id="getListingRating" >
         SELECT avg(rating) FROM review WHERE listing_id = #{listingId}

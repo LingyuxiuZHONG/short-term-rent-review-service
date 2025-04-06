@@ -23,4 +23,6 @@ public interface ReviewMapper {
     Integer ifHaveReviewed(Long reviewerId, Long listingId);
 
     Double getListingRating(Long listingId);
+
+    Integer getReviewCountByListingId(Long listingId);
 }
